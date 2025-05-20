@@ -48,13 +48,13 @@ const HomeScreen: React.FC = () => {
   return (
     <div style={{ width: '100vw', minHeight: '100vh', margin: '0 auto' }}>
       <Header />
-      <main
-        style={{
-          margin: '0 auto',
-          padding: 20,
-          boxSizing: 'border-box',
-        }}
-      >
+     <main
+ style={{
+   margin: '0 auto',
+   padding: '20px clamp(10px, 5vw, 40px)',
+   boxSizing: 'border-box',
+ }}
+>
         {/* Hero Slider Section with fixed content */} 
         <section style={{ marginBottom: 40, position: 'relative', minHeight: 780 }}>
           <Slider {...sliderSettings}>
@@ -73,6 +73,7 @@ const HomeScreen: React.FC = () => {
           </Slider>
           {/* Fixed hero text */}
           <div
+          className='hero-content'
             style={{
               position: 'absolute',
               left: '25%',
@@ -111,6 +112,7 @@ const HomeScreen: React.FC = () => {
           </div>
           {/* Fixed BookingSection */}
           <div
+          className='booking-container'
             style={{
               position: 'absolute',
               left: '80%',

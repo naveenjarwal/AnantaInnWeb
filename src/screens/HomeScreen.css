@@ -29,3 +29,19 @@
  
 
 }
+
+@media screen and (max-width: 768px) {
+ .hero-content {
+   flex-direction: column !important;
+   left: 50% !important;
+   transform: translate(-50%, -50%) !important;
+   max-width: 90% !important;
+ }
+ .booking-container {
+   position: static !important;
+   transform: none !important;
+   width: 100% !important;
+   max-width: 100% !important;
+   margin-top: 20px;
+ }
+}
