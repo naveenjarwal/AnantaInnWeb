@@ -31,7 +31,7 @@ const Header: React.FC = () => {
       <Logo />
       <nav>
         <NavLink to="/" end style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle } : linkStyle}>Home</NavLink>
-        <NavLink to="/about-us" style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle } : linkStyle}>About Us</NavLink>
+        <NavLink to="/about-us" style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle } : linkStyle}>About Us.....</NavLink>
         <NavLink to="/blog" style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle } : linkStyle}>Blog</NavLink>
         <NavLink to="/contact" style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle } : linkStyle}>Contact</NavLink>
         <NavLink to="/room-details" style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle, marginRight: 190 } : { ...linkStyle, marginRight: 190 }}>Room Details</NavLink>
