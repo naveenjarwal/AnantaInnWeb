@@ -20,6 +20,7 @@ const heroImages = [
    '/assets/images/hero-3.jpg',
 ];
 
+
 const slogans = [
  "Welcome to Ananta Inn — Where Comfortable Stays, Delicious Dining, and Breathtaking Rooftop Moments Come Together for an Unforgettable Experience.",
   "At Ananta Inn, we blend warm hospitality, cozy rooms, and rooftop views into a peaceful retreat in the heart of Jaipur.",
@@ -54,7 +55,7 @@ const HomeScreen: React.FC = () => {
           boxSizing: 'border-box',
         }}
       >
-        {/* Hero Slider Section with fixed content */}
+        {/* Hero Slider Section with fixed content */} 
         <section style={{ marginBottom: 40, position: 'relative', minHeight: 780 }}>
           <Slider {...sliderSettings}>
             {heroImages.map((img, idx) => (
