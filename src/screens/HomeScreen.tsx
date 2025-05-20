@@ -22,7 +22,7 @@ const heroImages = [
 
 
 const slogans = [
- "Welcome to Ananta Inn — Where Comfortable Stays, Delicious Dining, and Breathtaking Rooftop Moments Come Together for an Unforgettable Experience.",
+ "Welcome to  Inn — Where Comfortable Stays, Delicious Dining, and Breathtaking Rooftop Moments Come Together for an Unforgettable Experience.",
   "At Ananta Inn, we blend warm hospitality, cozy rooms, and rooftop views into a peaceful retreat in the heart of Jaipur.",
   "Discover the perfect blend of luxury, comfort, and culinary delight — all under one roof at Ananta Inn.",
   "More than just a stay — Ananta Inn offers you a place to relax, dine, and enjoy city views from our exclusive rooftop.",
