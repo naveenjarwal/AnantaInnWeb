@@ -1,0 +1,17 @@
+/your-app
+  /assets
+    /images
+  /components
+    BlogCard.js
+    Footer.js
+    Header.js
+    RoomCard.js
+    ServiceCard.js
+    TestimonialCard.js
+  /screens
+    AboutUsScreen.js
+    BlogScreen.js
+    ContactScreen.js
+    HomeScreen.js
+    RoomDetailsScreen.js
+  App.js
