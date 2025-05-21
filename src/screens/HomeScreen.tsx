@@ -80,7 +80,7 @@ const HomeScreen: React.FC = () => {
               zIndex: 2,
               width: '100%',
               maxWidth: 600,
-              background: 'rgba(0,0,0,0.35)',
+              background: 'rgba(0,0,0,0.70)',
               borderRadius: 12,
               padding: '40px 20px 20px 20px',
               boxSizing: 'border-box',

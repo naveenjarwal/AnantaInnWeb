@@ -303,8 +303,9 @@ const BookingSection: React.FC = () => {
             required
             min={today} // Disables past dates
             style={{
-              width: '92%',
+              width: '100%',
               padding: 12,
+               color:'#fff',
               borderRadius: 6,
               border: '1px solid #ddd',
               fontSize: 16,
@@ -321,7 +322,8 @@ const BookingSection: React.FC = () => {
             required
             min={checkIn || today} // Disables dates before check-in
             style={{
-              width: '92%',
+              width: '100%',
+              color:'#fff',
               padding: 12,
               borderRadius: 6,
               border: '1px solid #ddd',
@@ -392,6 +394,7 @@ const inputStyle: React.CSSProperties = {
   borderRadius: 6,
   border: '1px solid #ddd',
   fontSize: 16,
+  color:'#fff'
 };
 const buttonStyle: React.CSSProperties = {
   width: '100%',
