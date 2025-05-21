@@ -7,7 +7,7 @@ const Logo: React.FC = () => (
     gap: 14,
     fontFamily: "'Playfair Display', serif",
     fontWeight: 700,
-    fontSize: 32,
+    fontSize: 30,
     letterSpacing: 1,
     color: '#1a365d' // Deep blue for main text
   }}>
