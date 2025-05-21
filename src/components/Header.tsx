@@ -66,7 +66,7 @@ const Header: React.FC = () => {
           padding: '10px 28px',
           fontWeight: 600,
           fontSize: 25,
-          marginLeft: 20,         
+          marginLeft: 0,         
         }}
       onClick={() => setMenuOpen(true)}>
 &#9776;
