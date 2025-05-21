@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from './Logo';
+import './Header.css';
+import MobileMenu from './MobileMenu';
 
 const linkStyle = {
   color: '#19191a',
@@ -16,9 +18,11 @@ const activeStyle = {
 };
 
 const Header: React.FC = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   return (
+    <>
     <header style={{
       background: '#fff',
       padding: 20,
@@ -29,14 +33,14 @@ const Header: React.FC = () => {
       boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
     }}>
       <Logo />
-      <nav>
+      <nav className="desktop-nav">
         <NavLink to="/" end style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle } : linkStyle}>Home</NavLink>
-        <NavLink to="/about-us" style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle } : linkStyle}>About Us.....</NavLink>
+        <NavLink to="/about-us" style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle } : linkStyle}>About Us</NavLink>
         <NavLink to="/blog" style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle } : linkStyle}>Blog</NavLink>
         <NavLink to="/contact" style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle } : linkStyle}>Contact</NavLink>
         <NavLink to="/room-details" style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle, marginRight: 190 } : { ...linkStyle, marginRight: 190 }}>Room Details</NavLink>
       </nav>
-      <button
+      <button className="desktop-nav"
         onClick={() => navigate('/login')}
         style={{
           background: '#b9935a',
@@ -55,7 +59,23 @@ const Header: React.FC = () => {
       >
         Login
       </button>
+      <span className="hamburger"
+       style={{
+          color: '#000',
+          border: 'none',
+          padding: '10px 28px',
+          fontWeight: 600,
+          fontSize: 25,
+          marginLeft: 20,         
+        }}
+      onClick={() => setMenuOpen(true)}>
+&#9776;
+</span>
+
     </header>
+  
+<MobileMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+  </>
   );
 };
 

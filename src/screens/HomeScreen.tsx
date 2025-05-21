@@ -22,7 +22,7 @@ const heroImages = [
 
 
 const slogans = [
- "Welcome to  Inn — Where Comfortable Stays, Delicious Dining, and Breathtaking Rooftop Moments Come Together for an Unforgettable Experience.",
+ "Welcome to Ananta Inn — Where Comfortable Stays, Delicious Dining, and Breathtaking Rooftop Moments Come Together for an Unforgettable Experience.",
   "At Ananta Inn, we blend warm hospitality, cozy rooms, and rooftop views into a peaceful retreat in the heart of Jaipur.",
   "Discover the perfect blend of luxury, comfort, and culinary delight — all under one roof at Ananta Inn.",
   "More than just a stay — Ananta Inn offers you a place to relax, dine, and enjoy city views from our exclusive rooftop.",
@@ -46,31 +46,29 @@ const HomeScreen: React.FC = () => {
   };
 
   return (
-    <div style={{ width: '100vw', minHeight: '100vh', margin: '0 auto' }}>
+    <div className='main' style={{ width: '100vw', minHeight: '100vh', margin: '0 auto' }}>
       <Header />
-     <main
- style={{
-   margin: '0 auto',
-   padding: '20px clamp(10px, 5vw, 40px)',
-   boxSizing: 'border-box',
- }}
->
+    
         {/* Hero Slider Section with fixed content */} 
-        <section style={{ marginBottom: 40, position: 'relative', minHeight: 780 }}>
+        {/* <section style={{  position: 'relative',  }}> */}
+          <div className = "hero-wrapper">
           <Slider {...sliderSettings}>
             {heroImages.map((img, idx) => (
               <div key={idx}>
-                <div
+                <div 
+                className = "hero-slider"
                   style={{
                     background: `url('${img}') center/cover no-repeat`,
                     minHeight: 780,
-                    borderRadius: 12,
-                    width: '100%',
+                    minWidth:100,
+                    // borderRadius: 12,
+                    // width: '100%',
                   }}
                 />
               </div>
             ))}
           </Slider>
+         
           {/* Fixed hero text */}
           <div
           className='hero-content'
@@ -112,44 +110,35 @@ const HomeScreen: React.FC = () => {
           </div>
           {/* Fixed BookingSection */}
           <div
-          className='booking-container'
-            style={{
-              position: 'absolute',
-              left: '80%',
-              top: '50%',
-              transform: 'translate(-50%, -50%)',
-              zIndex: 2,
-              width: '100%',
-              maxWidth: 400,
-              padding: 0,
-              pointerEvents: 'auto'
-            }}
+          className = "booking-container"
+           
           >
             <BookingSection />
           </div>
-        </section>
+           </div>
+        {/* </section> */}
 
-        <h2 style={{ marginTop: 40 }}>Our Services</h2>
+        <h2 style={{ marginTop: 0 }}>Our Services</h2>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
           <ServiceCard title="Travel Plan" />
           <ServiceCard title="Catering" />
           <ServiceCard title="Babysitting" />
         </div>
-        <h2 style={{ marginTop: 40 }}>Rooms</h2>
+        <h2 style={{ marginTop: 0 }}>Rooms</h2>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
           <RoomCard title="Double Room" price="199" image="/assets/images/room-1.jpg" />
           <RoomCard title="Premium King Room" price="159" image="/assets/images/room-2.jpg" />
           <RoomCard title="Deluxe Room" price="299" image="/assets/images/room-3.jpg" />
         </div>
-        <h2 style={{ marginTop: 40 }}>Testimonials</h2>
+        <h2 style={{ marginTop: 0 }}>Testimonials</h2>
        <TestimonialCard
   author="Priya Sharma"
   text="Our stay in Jaipur was magical! The decor and hospitality felt truly Rajasthani."
   image="https://randomuser.me/api/portraits/women/68.jpg" // or any Jaipur/ethnic avatar
 />
-        <h2 style={{ marginTop: 40 }}>Blog</h2>
+        <h2 style={{ marginTop: 0 }}>Blog</h2>
         <BlogCard title="Tremblant In Canada" date="15th April, 2019" />
-      </main>
+    
       <Footer />
     </div>
   );
