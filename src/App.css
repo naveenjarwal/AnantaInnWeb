@@ -5,9 +5,9 @@
   text-align: center;
 }
 html, body {
- -webkit-text-size-adjust: 100%;  /* For iOS Safari */
- -ms-text-size-adjust: 100%;      /* For Internet Explorer Mobile */
- text-size-adjust: 100%;          /* Standard syntax */
+ -webkit-text-size-adjust: none;  /* For iOS Safari */
+ -ms-text-size-adjust: none;      /* For Internet Explorer Mobile */
+ text-size-adjust: none;          /* Standard syntax */
 }
 
 .logo {
