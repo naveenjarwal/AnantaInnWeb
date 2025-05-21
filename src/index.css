@@ -14,10 +14,9 @@
 }
 
 html, body {
- font-size: 16px;
- -webkit-text-size-adjust: none;
- -ms-text-size-adjust: none;
- text-size-adjust: none;
+ -webkit-text-size-adjust: 100%;  /* For iOS Safari */
+ -ms-text-size-adjust: 100%;      /* For Internet Explorer Mobile */
+ text-size-adjust: 100%;          /* Standard syntax */
 }
 
 a {
