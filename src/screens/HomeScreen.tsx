@@ -46,7 +46,7 @@ const HomeScreen: React.FC = () => {
   };
 
   return (
-    <div className='main' style={{ width: '100vw', minHeight: '100vh', margin: '0 auto' }}>
+    <div className='main' style={{ width: '100vw', minHeight: '100vh', margin: '0 auto',overflow:'hidden' }}>
       <Header />
     
         {/* Hero Slider Section with fixed content */} 
@@ -60,9 +60,9 @@ const HomeScreen: React.FC = () => {
                   style={{
                     background: `url('${img}') center/cover no-repeat`,
                     minHeight: 780,
-                    minWidth:100,
+                    // minWidth:100,
                     // borderRadius: 12,
-                    // width: '100%',
+                    width: '100%',
                   }}
                 />
               </div>

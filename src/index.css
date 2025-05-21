@@ -13,6 +13,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html, body {
+ font-size: 16px;
+ -webkit-text-size-adjust: none;
+ -ms-text-size-adjust: none;
+ text-size-adjust: none;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
