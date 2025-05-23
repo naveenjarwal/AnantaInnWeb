@@ -63,7 +63,7 @@ There’s an informal, alcohol-free restaurant. Vegetarian breakfast and parking
             fontWeight: 500,
             lineHeight: '36px',
             marginBottom: 16
-                 }}>081308 10918</span>
+                 }}>+91-9660969602</span>
           </div>
           <div style={{ marginBottom: 12 }}>
              <strong style={{
@@ -79,14 +79,14 @@ There’s an informal, alcohol-free restaurant. Vegetarian breakfast and parking
             fontWeight: 500,
             lineHeight: '36px',
             marginBottom: 16
-                }}>info.colorlib@gmail.com</span>
+                }}>nvnjarwal@gmail.com</span>
           </div>
         </div>
         {/* Contact Form */}
         <form
           style={{
             flex: 1.2,
-            minWidth: 340,
+            minWidth: 300,
             display: 'flex',
             flexDirection: 'column',
             gap: 18,
@@ -96,7 +96,7 @@ There’s an informal, alcohol-free restaurant. Vegetarian breakfast and parking
           }}
           onSubmit={e => { e.preventDefault(); alert('Message submitted!'); }}
         >
-          <div style={{ display: 'flex', gap: 16 }}>
+          <div style={{ display: 'flex',flexDirection:'column', gap: 16 }}>
             <input
               type="text"
               placeholder="Your Name"

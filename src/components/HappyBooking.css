@@ -1,0 +1,62 @@
+.modal-content {
+
+  width: 90vw;
+
+  max-width: 400px;
+
+  min-height: 20vh;
+
+  margin: 60px auto;
+
+  background: #ad6363;
+
+  padding: 32px;
+
+  border-radius: 12px;
+
+  box-shadow: 0 2px 12px #eee;
+
+}
+
+/* Optional: Centering inside overlay */
+
+.modal-overlay {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 20px;
+
+}
+
+/* Responsive adjustments for larger screens */
+
+@media (min-width: 768px) {
+
+  .modal-content {
+
+    width: 40vw;
+
+    min-height: 25vh;
+
+    padding: 40px;
+
+  }
+
+}
+
+@media (min-width: 1024px) {
+
+  .modal-content {
+
+    width: 30vw;
+
+    padding: 48px;
+
+  }
+
+}
+ 

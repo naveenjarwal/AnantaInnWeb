@@ -11,6 +11,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './HomeScreen.css';
 import Logo from '../components/Logo';
+import RoomDetailsCard from '../components/RoomCard';
 
 const heroImages = [
   '/assets/images/hero-1.jpg',
@@ -27,6 +28,30 @@ const slogans = [
   "Discover the perfect blend of luxury, comfort, and culinary delight — all under one roof at Ananta Inn.",
   "More than just a stay — Ananta Inn offers you a place to relax, dine, and enjoy city views from our exclusive rooftop.",
   "Your gateway to comfort, taste, and tranquility — welcome to Ananta Inn, where every guest feels like family."
+];
+
+const rooms = [
+ {
+   title: 'Standard Room',
+   price: 1500,
+   image: '/assets/images/room-1.jpg',
+   description: 'Comfortable double room with attached bathroom and city view.',
+   amenities: ['Free Wi-Fi', 'Air Conditioning', 'Room Service', 'TV', 'Attached Bathroom'],
+ },
+ {
+   title: 'Deluxe Room',
+    price: 1800,
+   image: '/assets/images/room-2.jpg',
+   description: 'Spacious king-sized room ideal for couples with elegant decor.',
+   amenities: ['Balcony', 'Smart TV', 'Mini Fridge', 'Complimentary Breakfast', 'Wi-Fi'],
+ },
+ {
+   title: 'Super Deluxe Room',
+  price: 2500,
+   image: '/assets/images/room-3.jpg',
+   description: 'Premium luxury room with top-tier amenities and city skyline view.',
+   amenities: ['Bathtub', 'City View', 'King Bed', 'Coffee Maker', '24/7 Concierge'],
+ },
 ];
 
 const HomeScreen: React.FC = () => {
@@ -119,16 +144,19 @@ const HomeScreen: React.FC = () => {
         {/* </section> */}
 
         <h2 style={{ marginTop: 0 }}>Our Services</h2>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
+        {/* <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
           <ServiceCard title="Travel Plan" />
           <ServiceCard title="Catering" />
           <ServiceCard title="Babysitting" />
-        </div>
+        </div> */}
         <h2 style={{ marginTop: 0 }}>Rooms</h2>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
-          <RoomCard title="Double Room" price="199" image="/assets/images/room-1.jpg" />
-          <RoomCard title="Premium King Room" price="159" image="/assets/images/room-2.jpg" />
-          <RoomCard title="Deluxe Room" price="299" image="/assets/images/room-3.jpg" />
+          {/* <RoomCard title="Standard Room" price="1500" image="/assets/images/room-1.jpg" description={''} amenities={[]} />
+          <RoomCard title="Deluxe Room" price="1800" image="/assets/images/room-2.jpg"  description={''} amenities={[]}/>
+          <RoomCard title="Super Deluxe Room" price="2500" image="/assets/images/room-3.jpg"  description={''} amenities={[]}/> */}
+           {rooms.map((room, idx) => (
+            <RoomDetailsCard key={idx} {...room} />
+     ))}
         </div>
         <h2 style={{ marginTop: 0 }}>Testimonials</h2>
        <TestimonialCard

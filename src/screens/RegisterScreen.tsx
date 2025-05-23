@@ -3,47 +3,34 @@ import { useNavigate } from 'react-router-dom';
 import Logo from '../components/Logo';
 
 const RegisterScreen: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [mobile, setMobile] = useState('');
-  const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-
-  const handleRegister = async (e: React.FormEvent) => {
+  const handleSendOtp = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
-    // Replace with your backend API call
-    const res = await fetch('https://anantainn.onrender.com/api/auth/register', {
+    const res = await fetch('https://anantainn.onrender.com/api/send-otp', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ name, email, mobile, password }),
-    // });
-     body: JSON.stringify({
-      name: name,
-      email: email,
-      mobile: mobile,
-      password: password
-    })
+      body: JSON.stringify({ name, email, mobile }),
     });
     const data = await res.json();
-        alert(JSON.stringify(data)); // Show API response (e.g., token or error)
-     console.log("res-register",data)
     if (res.ok) {
-      navigate('/login');
+      localStorage.setItem('userInfo', JSON.stringify({ name, email, mobile }));
+      navigate('/verify-otp');
     } else {
-      setError('Registration failed');
+      setError(data.message || 'Failed to send OTP');
     }
   };
-
   return (
-    <div style={{display:'flex',flexDirection:'column',width:'100vw', minHeight: '100vh', alignItems:'center',justifyContent:'center',margin: '0 auto',backgroundColor:'#e3e2e1' }}>
-      <Logo/>
-      <div style={{ width:'20vw', minHeight: '20vh', margin: '60px auto', background: '#fff', padding: 32, borderRadius: 12, boxShadow: '0 2px 12px #eee' }}>
-        <h2 style={{ marginBottom: 24 , color:'#000'}}>Register</h2>
-        <form onSubmit={handleRegister}>
+    <div style={{ display: 'flex', flexDirection: 'column', width: '100vw', minHeight: '100vh', alignItems: 'center', justifyContent: 'center', margin: '0 auto', backgroundColor: '#e3e2e1' }}>
+      <Logo />
+      <div className='modal-content'  style={{ width: '20vw', minHeight: '20vh', margin: '60px auto', background: '#fff', padding: 32, borderRadius: 12, boxShadow: '0 2px 12px #eee' }}>
+        <h2 style={{ marginBottom: 24, color: '#000' }}>Register</h2>
+        <form onSubmit={handleSendOtp}>
           <input
-            type="text"
+            type="name"
             placeholder="Name"
             value={name}
             required
@@ -51,27 +38,19 @@ const RegisterScreen: React.FC = () => {
             style={{ width: '90%', marginBottom: 16, padding: 12, borderRadius: 6, border: '1px solid #ddd' }}
           />
           <input
-            type="number"
-            placeholder="Mobile Number"
+            placeholder="Mobile"
             value={mobile}
             onChange={e => setMobile(e.target.value)}
+            required
             style={{ width: '90%', marginBottom: 16, padding: 12, borderRadius: 6, border: '1px solid #ddd' }}
           />
           <input
-            type="email"
-            placeholder="Email (optional)"
+            placeholder="Email"
             value={email}
             onChange={e => setEmail(e.target.value)}
             style={{ width: '90%', marginBottom: 16, padding: 12, borderRadius: 6, border: '1px solid #ddd' }}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            required
-            onChange={e => setPassword(e.target.value)}
-            style={{ width: '90%', marginBottom: 16, padding: 12, borderRadius: 6, border: '1px solid #ddd' }}
-          />
+            required />
+
           <button type="submit" style={{ width: '100%', padding: 12, borderRadius: 6, background: '#b9935a', color: '#fff', fontWeight: 600, border: 'none' }}>
             Register
           </button>
@@ -79,9 +58,9 @@ const RegisterScreen: React.FC = () => {
         </form>
         <div style={{ marginTop: 18, textAlign: 'center' }}>
           Already have an account?{' '}
-          <span style={{ color: '#b9935a', cursor: 'pointer' }} onClick={() => navigate('/login')}>
+          {/* <span style={{ color: '#b9935a', cursor: 'pointer' }} onClick={() => navigate('/login')}>
             Login
-          </span>
+          </span> */}
         </div>
       </div>
     </div>
@@ -90,4 +69,60 @@ const RegisterScreen: React.FC = () => {
 
 export default RegisterScreen;
 
-// Inside your <Routes>
+// // Inside your <Routes>
+
+
+
+// import { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// export default function Register() {
+//  const [name, setName] = useState('');
+//  const [mobile, setMobile] = useState('');
+//  const [email, setEmail] = useState('');
+//  const [error, setError] = useState('');
+//  const navigate = useNavigate();
+//  const handleSendOtp = async (e: React.FormEvent) => {
+//    e.preventDefault();
+//    const res = await fetch('https://anantainn.onrender.com/api/send-otp', {
+//      method: 'POST',
+//      headers: { 'Content-Type': 'application/json' },
+//      body: JSON.stringify({ name, email, mobile }),
+//    });
+//    const data = await res.json();
+//    if (res.ok) {
+//      localStorage.setItem('userInfo', JSON.stringify({ name, email, mobile }));
+//      navigate('/verify-otp');
+//    } else {
+//      setError(data.message || 'Failed to send OTP');
+//    }
+//  };
+//  return (
+// <form onSubmit={handleSendOtp} style={{ maxWidth: 400, margin: 'auto' }}>
+// <h2>Register to Book</h2>
+//  <input
+//             type="password"
+//             placeholder="Name"
+//             value={name}
+//             required
+//             onChange={e => setName(e.target.value)} 
+//             style={{ width: '90%', marginBottom: 16, padding: 12, borderRadius: 6, border: '1px solid #ddd' }}
+//           />
+// <input 
+// placeholder="Mobile" 
+// value={mobile} 
+// onChange={e => setMobile(e.target.value)} 
+// required
+// style={{ width: '90%', marginBottom: 16, padding: 12, borderRadius: 6, border: '1px solid #ddd' }}
+//  />
+// <input 
+// placeholder="Email" 
+// value={email} 
+// onChange={e => setEmail(e.target.value)} 
+// style={{ width: '90%', marginBottom: 16, padding: 12, borderRadius: 6, border: '1px solid #ddd' }}
+// required />
+
+// <button type="submit">Send OTP</button>
+//      {error && <p style={{ color: 'red' }}>{error}</p>}
+// </form>
+//  );
+// }

@@ -7,6 +7,8 @@ import ContactScreen from './screens/ContactScreen';
 import RoomDetailsScreen from './screens/RoomDetailsScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import OTPVerify from './components/OTPVerify';
+import HappyBooking from './components/HappyBooking';
 
 const App: React.FC = () => (
   <Router>
@@ -18,6 +20,8 @@ const App: React.FC = () => (
       <Route path="/room-details" element={<RoomDetailsScreen />} />
       <Route path="/login" element={<LoginScreen />} />
       <Route path="/register" element={<RegisterScreen />} />
+       <Route path="/verify-otp" element={<OTPVerify />} />
+        <Route path="/happy-booking" element={<HappyBooking />} />
     </Routes>
   </Router>
 );
