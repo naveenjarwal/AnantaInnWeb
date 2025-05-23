@@ -69,11 +69,20 @@ const BookingSection: React.FC = () => {
 
 
   const handleSubmit = async (e: React.FormEvent) => {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
+
+     // Check if userInfo has required fields
+ if (!userInfo || !userInfo.name || !userInfo.email || !userInfo.mobile) {
+   // Redirect to registration or show modal
+   navigate('/register'); // or show a modal instead
+   return;
+ }
+    
     e.preventDefault();
     setLoading(true);
     setError('');
     setSubmitted(false);
-const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
+
     const res = await fetch('https://anantainn.onrender.com/api/bookings/createBooking', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

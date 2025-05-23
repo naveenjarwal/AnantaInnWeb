@@ -38,6 +38,7 @@ const RegisterScreen: React.FC = () => {
             style={{ width: '90%', marginBottom: 16, padding: 12, borderRadius: 6, border: '1px solid #ddd' }}
           />
           <input
+          type='number'
             placeholder="Mobile"
             value={mobile}
             onChange={e => setMobile(e.target.value)}
