@@ -74,7 +74,7 @@ const BookingSection: React.FC = () => {
     setError('');
     setSubmitted(false);
 const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
-    const res = await fetch('http://localhost:5000/api/bookings/createBooking', {
+    const res = await fetch('https://anantainn.onrender.com/api/bookings/createBooking', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
@@ -107,7 +107,7 @@ const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
   };
 
   const handleAllBooking = ()=>{
-    fetch('http://localhost:5000/api/bookings/allBookings').then(response => response.json()).then(data=>{
+    fetch('https://anantainn.onrender.com/api/bookings/allBookings').then(response => response.json()).then(data=>{
       console.log("Booking", data)
      }).catch(error=>{
       console.log("Error",error)
