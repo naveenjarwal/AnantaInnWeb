@@ -48,7 +48,7 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
           <NavLink to="/blog" className='navi-data'>Blog</NavLink>
           <NavLink to="/contact" className='navi-data'>Contact</NavLink>
           <NavLink to="/room-details" className='navi-data'>Room Details</NavLink>
-          {userInfo.email === "nvnjarwal@gmail.com" ? 
+          {userInfo.email?.trim().toLowerCase() === "nvnjarwal@gmail.com" ? 
           <NavLink to="/all-booking" className='navi-data'>All Bookings</NavLink>:null  
         }
         

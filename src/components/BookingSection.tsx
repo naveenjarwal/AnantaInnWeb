@@ -125,19 +125,11 @@ const BookingSection: React.FC = () => {
        navigate('/happy-booking');
     } else {
       setError('Booking failed. Please try again.');
+       setLoading(false);
     }
     setLoading(false);
   };
 }
-
-  const handleAllBooking = ()=>{
-    fetch('https://anantainn.onrender.com/api/bookings/allBookings').then(response => response.json()).then(data=>{
-      console.log("Booking", data)
-     }).catch(error=>{
-      console.log("Error",error)
-     })
-    // console.log("allBooking",allBooking)
-  }
 
    // Prevent past dates being entered manually on iOS
  const handleCheckInChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -161,15 +153,6 @@ const BookingSection: React.FC = () => {
      setCheckOut('');
    } else {
      setCheckOut(selected);
-   }
- };
-
-  const handleClick = () => {
-   const loggedIn = localStorage.getItem('loggedIn');
-   if (!loggedIn) {
-     navigate('/register');
-   } else {
-     navigate('/booking-success');
    }
  };
 
