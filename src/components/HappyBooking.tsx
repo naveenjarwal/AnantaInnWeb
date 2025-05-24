@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../components/Logo';
 
@@ -7,6 +7,10 @@ const HappyBooking: React.FC = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    localStorage.removeItem('bookingInfo')
+  }, []);
 
 
   return (

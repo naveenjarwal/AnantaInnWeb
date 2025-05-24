@@ -9,6 +9,34 @@ export default function OTPVerify() {
      const { setLoading } = useLoader();
 
     const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
+     const bookingInfo = JSON.parse(localStorage.getItem('bookingInfo') || '{}');
+
+    const handleBooking = async() =>{
+        setLoading(true)
+         const res = await fetch('https://anantainn.onrender.com/api/bookings/createBooking', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        name: userInfo.name,
+        email:userInfo.email,
+        mobile:userInfo.mobile,
+        checkIn:bookingInfo.checkIn, 
+        checkOut:bookingInfo.checkOut, 
+        guests:bookingInfo.guests, 
+        rooms:bookingInfo.rooms, 
+        roomType:bookingInfo.roomType, 
+        extraMattresses:bookingInfo.extraMattresses, 
+        totalPrice:bookingInfo.totalPrice  
+      }),
+    });
+
+    if (res.ok) {
+       navigate('/happy-booking');
+        setLoading(false)
+    } else {
+      setError('Booking failed. Please try again.');
+    }
+    }
     const handleVerify = async (e: React.FormEvent) => {
         setLoading(true)
         e.preventDefault();
@@ -21,9 +49,11 @@ export default function OTPVerify() {
         if (res.ok) {
              setLoading(false)
             localStorage.setItem('loggedIn', 'true');
-            navigate('/');
+            // navigate('/');
+            handleBooking()
         } else {
             setError(data.message || 'Invalid OTP');
+             setLoading(false)
         }
     };
     return (

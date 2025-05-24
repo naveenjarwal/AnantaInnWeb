@@ -77,10 +77,20 @@ const BookingSection: React.FC = () => {
 
      // Check if userInfo has required fields
  if (!userInfo || !userInfo.name || !userInfo.email || !userInfo.mobile) {
-   // Redirect to registration or show modal
+  
    navigate('/register'); // or show a modal instead
-   return;
- }
+  
+    localStorage.setItem('bookingInfo', JSON.stringify({ 
+       checkIn:checkIn, 
+        checkOut:checkOut, 
+        guests:guests, 
+        rooms:rooms, 
+        roomType:roomType, 
+        extraMattresses:extraMattresses, 
+        totalPrice:totalPrice 
+     }));
+ 
+ }else{
     
     e.preventDefault();
     setLoading(true);
@@ -118,6 +128,7 @@ const BookingSection: React.FC = () => {
     }
     setLoading(false);
   };
+}
 
   const handleAllBooking = ()=>{
     fetch('https://anantainn.onrender.com/api/bookings/allBookings').then(response => response.json()).then(data=>{
