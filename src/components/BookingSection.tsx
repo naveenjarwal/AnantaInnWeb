@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './Modal.css'; // CSS file for styles
 import './BookingSection.css'
 import { useNavigate } from 'react-router-dom';
+import { isAndroid , isIOS} from 'react-device-detect';  
+import { useLoader } from '../context/LoaderContext';
+
 const roomTypePrices: Record<string, number> = {
   standard: 1000,
   deluxe: 1500,
@@ -17,8 +20,9 @@ const BookingSection: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [extraMattresses, setExtraMattresses] = useState('0');
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
+   const { setLoading } = useLoader();
 
    const navigate = useNavigate();
 
@@ -163,7 +167,7 @@ const BookingSection: React.FC = () => {
       style={{
         background: '#fff',
         borderRadius: 12,
-        padding: 32,
+        padding:32,
         maxWidth: 420,
         margin: '0 auto',
         boxShadow: '0 4px 24px rgba(0,0,0,0.10)',
@@ -171,20 +175,24 @@ const BookingSection: React.FC = () => {
         zIndex: 2,
       }}
     >
-      <h2 style={{ fontFamily: 'Lora, serif', color: 'gray', fontWeight: 400, fontSize: 34, marginBottom: 24 }}>
+      <h2 style={{ fontFamily: 'Lora, serif', color: 'gray', fontWeight: 400, fontSize: 30, marginBottom: 24 }}>
         Book Your Room
       </h2>
       <form onSubmit={handleSubmit}>
         {/* Check In */}
-        <div style={{ marginBottom: 18, position:'relative',width:'100%' }}>
+        <div className='' style={{ marginBottom: 18, position:'relative',width: isIOS ?'98%':'90%',}}>
           <label style={{ color: 'gray', marginBottom: 6, display: 'block' }}>Check In:</label>
            <div style={{position:'relative'}}>
             {isMobile && !checkIn && (
               <label style={{
                 position:'absolute',
-                top:5,
+                display:'flex',
+                alignItems:'center',
+                justifyContent:'center',
+                top:isIOS ?5:10,
                 left:10,
-                fontWeight:500
+                fontWeight:400,
+                color:'#fff'
               }}>
                 DD/MM/YYYY
               </label>
@@ -198,6 +206,7 @@ const BookingSection: React.FC = () => {
             min={today} // Disables past dates
             style={{
               width: '100%',
+              backgroundColor:'rgb(59,59,59)' ,
               padding: 12,
                color:'#fff',
               borderRadius: 6,
@@ -208,15 +217,16 @@ const BookingSection: React.FC = () => {
           </div>
         </div>
         {/* Check Out */}
-        <div style={{ marginBottom: 18 ,position:'relative',width:'100%' }}>
+        <div style={{ marginBottom: 18 ,position:'relative',width: isIOS ?'98%':'90%', }}>
           <label style={{ color: 'gray', marginBottom: 6, display: 'block' }}>Check Out:</label>
           <div style={{position:'relative'}}>
             {isMobile && !checkOut && (
               <label style={{
                 position:'absolute',
-                top:5,
+                top:isIOS ?5:10,
                 left:10,
-                fontWeight:500
+                fontWeight:400,
+                 color:'#fff',
               }}>
                 DD/MM/YYYY
               </label>
@@ -231,6 +241,7 @@ const BookingSection: React.FC = () => {
             style={{
               width: '100%',
               color:'#fff',
+               backgroundColor:'rgb(59,59,59)' ,
               padding: 12,
               borderRadius: 6,
               border: '1px solid #ddd',
@@ -247,6 +258,12 @@ const BookingSection: React.FC = () => {
             <option value="2">2 ADULTS</option>
             <option value="3">3 ADULTS</option>
             <option value="4">4 ADULTS</option>
+             <option value="5">5 ADULT</option>
+            <option value="6">6 ADULTS</option>
+            <option value="7">7 ADULTS</option>
+            <option value="8">8 ADULTS</option>
+             <option value="9">9 ADULT</option>
+            <option value="10">10 ADULTS</option>
           </select>
         </div>
         {/* Rooms */}
@@ -257,6 +274,7 @@ const BookingSection: React.FC = () => {
             <option value="2">2 ROOMS</option>
             <option value="3">3 ROOMS</option>
             <option value="4">4 ROOMS</option>
+             <option value="5">5 ROOMS</option>
           </select>
         </div>
         {/* Room Type */}
@@ -286,8 +304,8 @@ const BookingSection: React.FC = () => {
           </div>
         )}
         {/* Submit Button */}
-        <button onClick={handleSubmit} type="submit" disabled={loading} style={buttonStyle}>
-          {loading ? 'Checking...' : 'Book Your Stay'}
+        <button onClick={handleSubmit} type="submit"  style={buttonStyle}>
+          Book Your Stay
         </button>
 
         {/* Feedback */}
@@ -303,7 +321,8 @@ const inputStyle: React.CSSProperties = {
   borderRadius: 6,
   border: '1px solid #ddd',
   fontSize: 16,
-  color:'#fff'
+  color:'#fff',
+   backgroundColor:'rgb(59,59,59)' ,
 };
 const buttonStyle: React.CSSProperties = {
   width: '100%',

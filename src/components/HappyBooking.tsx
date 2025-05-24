@@ -10,7 +10,7 @@ const HappyBooking: React.FC = () => {
 
 
   return (
-    <div  style={{display:'flex',flexDirection:'column',width:'100vw', minHeight: '100vh', alignItems:'center',justifyContent:'center',margin: '0 auto',backgroundColor:'#e3e2e1' }}>
+    <div   style={{display:'flex',flexDirection:'column',width:'100vw', minHeight: '100vh', alignItems:'center',justifyContent:'center',margin: '0 auto',backgroundColor:'#e3e2e1' }}>
          <Logo/>
     <div 
     className='modal-content' 

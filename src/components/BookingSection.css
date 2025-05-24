@@ -1,4 +1,6 @@
-
+ .input-style{
+   width: 50%;
+ }
  .other-field{
     min-width: 100%;
  }
@@ -15,5 +17,8 @@
     padding: 120px;
     color: red;
     /* background-color: blue; */
+ }
+ .input-style{
+   width: 50%;
  }
 }

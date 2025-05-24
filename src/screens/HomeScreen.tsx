@@ -71,12 +71,12 @@ const HomeScreen: React.FC = () => {
   };
 
   return (
-    <div className='main' style={{ width: '100vw', minHeight: '100vh', margin: '0 auto',overflow:'hidden' }}>
+    <div className='main-screen' style={{ width: '100vw', minHeight: '100vh', margin: '0 auto',overflow:'hidden' }}>
       <Header />
     
         {/* Hero Slider Section with fixed content */} 
         {/* <section style={{  position: 'relative',  }}> */}
-          <div className = "hero-wrapper">
+          <div  className = "hero-wrapper">
           <Slider {...sliderSettings}>
             {heroImages.map((img, idx) => (
               <div key={idx}>
@@ -105,6 +105,7 @@ const HomeScreen: React.FC = () => {
               zIndex: 2,
               width: '100%',
               maxWidth: 600,
+              // maxHeight:500,
               background: 'rgba(0,0,0,0.70)',
               borderRadius: 12,
               padding: '40px 20px 20px 20px',
@@ -128,7 +129,8 @@ const HomeScreen: React.FC = () => {
               textShadow: '1px 1px 6px #000',
               fontSize: 'clamp(1rem, 3vw, 20px)',
               marginBottom: 32,
-              marginTop: 0
+              marginTop: 0,
+              color:'#fff'
             }}>
               {slogans[currentSlide]}
             </p>

@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../components/Logo';
+import { useLoader } from '../context/LoaderContext';
 
 const RegisterScreen: React.FC = () => {
   const [name, setName] = useState('');
   const [mobile, setMobile] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
+   const { setLoading } = useLoader();
   const navigate = useNavigate();
+
+
   const handleSendOtp = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true)
     const res = await fetch('https://anantainn.onrender.com/api/send-otp', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -17,6 +22,7 @@ const RegisterScreen: React.FC = () => {
     });
     const data = await res.json();
     if (res.ok) {
+      setLoading(false)
       localStorage.setItem('userInfo', JSON.stringify({ name, email, mobile }));
       navigate('/verify-otp');
     } else {
@@ -58,7 +64,7 @@ const RegisterScreen: React.FC = () => {
           {error && <div style={{ color: 'red', marginTop: 12 }}>{error}</div>}
         </form>
         <div style={{ marginTop: 18, textAlign: 'center' }}>
-          Already have an account?{' '}
+          {/* Already have an account?{' '} */}
           {/* <span style={{ color: '#b9935a', cursor: 'pointer' }} onClick={() => navigate('/login')}>
             Login
           </span> */}

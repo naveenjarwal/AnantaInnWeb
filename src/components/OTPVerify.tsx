@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLoader } from '../context/LoaderContext';
 import Logo from '../components/Logo';
 export default function OTPVerify() {
     const [otp, setOtp] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
+     const { setLoading } = useLoader();
+
     const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
     const handleVerify = async (e: React.FormEvent) => {
+        setLoading(true)
         e.preventDefault();
         const res = await fetch('https://anantainn.onrender.com/api/verify-otp', {
             method: 'POST',
@@ -15,6 +19,7 @@ export default function OTPVerify() {
         });
         const data = await res.json();
         if (res.ok) {
+             setLoading(false)
             localStorage.setItem('loggedIn', 'true');
             navigate('/');
         } else {

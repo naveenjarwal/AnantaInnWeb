@@ -6,11 +6,11 @@
 
   align-items: center;
 
-  padding: 16px 24px;
+  /* padding: 16px 24px; */
 
-  background-color: white;
+  /* background-color: white; */
 
-  position: sticky;
+  /* position: sticky; */
 
   top: 0;
 
@@ -79,6 +79,33 @@
     display: block; /* show hamburger */
 
   }
+
+  .header-screen {
+    width: 90%;
+  }
+
+  .main-header {
+
+  /* display: flex; */
+
+  /* justify-content: space-between; */
+
+  /* align-items: center; */
+
+  /* padding: 16px 24px; */
+
+  /* background-color: rgb(134, 45, 45); */
+  /* width: 100%; */
+
+  /* position: sticky; */
+
+  top: 0;
+
+  z-index: 1000;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+}
 
 }
  

@@ -18,47 +18,62 @@ const activeStyle = {
 };
 
 const Header: React.FC = () => {
+
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
+  const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
+
   return (
-    <>
-    <header style={{
+    <div className='main-header' style={{ maxWidth:'100%'}}>
+    {/* <header  style={{
+     
       background: '#fff',
       padding: 20,
       color: '#fff',
       display: 'flex',
+      flexDirection:'row',
       justifyContent: 'space-between',
       alignItems: 'center',
       boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-    }}>
+    }}> */}
       <Logo />
       <nav className="desktop-nav">
-        <NavLink to="/" end style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle } : linkStyle}>Home</NavLink>
-        <NavLink to="/about-us" style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle } : linkStyle}>About Us</NavLink>
-        <NavLink to="/blog" style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle } : linkStyle}>Blog</NavLink>
-        <NavLink to="/contact" style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle } : linkStyle}>Contact</NavLink>
-        <NavLink to="/room-details" style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle, marginRight: 190 } : { ...linkStyle, marginRight: 190 }}>Room Details</NavLink>
+        <NavLink 
+        to="/" end 
+        style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle } : linkStyle}>
+          Home
+        </NavLink>
+        <NavLink 
+        to="/about-us" 
+        style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle } : linkStyle}>
+          About Us
+        </NavLink>
+        <NavLink 
+        to="/blog" 
+        style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle } : linkStyle}>
+          Blog
+        </NavLink>
+        <NavLink 
+        to="/contact" 
+        style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle } : linkStyle}>
+          Contact
+        </NavLink>
+        {userInfo.email === "nvnjarwal@gmail.com" ? 
+                
+        <NavLink 
+        to="/all-booking" 
+        style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle } : linkStyle}>
+          All Booking
+        </NavLink>
+        :null}
+        <NavLink 
+        to="/room-details" 
+        style={({ isActive }) => isActive ? { ...linkStyle, ...activeStyle, marginRight: 190 } : { ...linkStyle, marginRight: 190 }}>
+          Room Details
+        </NavLink>
       </nav>
-      <button className="desktop-nav"
-        onClick={() => navigate('/login')}
-        style={{
-          background: '#b9935a',
-          color: '#fff',
-          border: 'none',
-          borderRadius: 6,
-          padding: '10px 28px',
-          fontWeight: 600,
-          fontSize: 16,
-          cursor: 'pointer',
-          marginLeft: 20,
-          letterSpacing: 1,
-          boxShadow: '0 2px 8px #b9935a22',
-          transition: 'background 0.2s, color 0.2s'
-        }}
-      >
-        Login
-      </button>
+    
       <span className="hamburger"
        style={{
           color: '#000',
@@ -71,11 +86,9 @@ const Header: React.FC = () => {
       onClick={() => setMenuOpen(true)}>
 &#9776;
 </span>
-
-    </header>
   
 <MobileMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
-  </>
+  </div>
   );
 };
 
