@@ -17,7 +17,6 @@ const BookingSection: React.FC = () => {
   const [rooms, setRooms] = useState('1');
   const [roomType, setRoomType] = useState('standard');
   const [totalPrice, setTotalPrice] = useState(0);
-  const [submitted, setSubmitted] = useState(false);
   const [extraMattresses, setExtraMattresses] = useState('0');
   const [error, setError] = useState('');
   // const [loading, setLoading] = useState(false);
@@ -42,10 +41,6 @@ const BookingSection: React.FC = () => {
  const closeModal = () => {
    setShowModal(false);
  };
-
-
-  // const today = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
-
   // Recalculate total price whenever values change
 
   const [today, setToday] = useState('');
@@ -73,13 +68,11 @@ const BookingSection: React.FC = () => {
 
 
   const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
     const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
-
      // Check if userInfo has required fields
  if (!userInfo || !userInfo.name || !userInfo.email || !userInfo.mobile) {
-  
    navigate('/register'); // or show a modal instead
-  
     localStorage.setItem('bookingInfo', JSON.stringify({ 
        checkIn:checkIn, 
         checkOut:checkOut, 
@@ -91,13 +84,10 @@ const BookingSection: React.FC = () => {
      }));
  
  }else{
-    
-    e.preventDefault();
     setLoading(true);
     setError('');
-    setSubmitted(false);
-
-    const res = await fetch('https://anantainn.onrender.com/api/bookings/createBooking', {
+    try{
+ const res = await fetch('https://anantainn.onrender.com/api/bookings/createBooking', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
@@ -115,19 +105,22 @@ const BookingSection: React.FC = () => {
     });
 
     if (res.ok) {
-      setSubmitted(true);
       setCheckIn('');
       setCheckOut('');
       setGuests('2');
       setRooms('1');
       setRoomType('standard');
-      // setShowModal(true);
        navigate('/happy-booking');
+       setLoading(false);
     } else {
       setError('Booking failed. Please try again.');
        setLoading(false);
     }
-    setLoading(false);
+    } catch (error) {
+       setError('Booking failed. Please try again.');
+       setLoading(false);
+    }
+    
   };
 }
 
@@ -172,7 +165,7 @@ const BookingSection: React.FC = () => {
       <h2 style={{ fontFamily: 'Lora, serif', color: 'gray', fontWeight: 400, fontSize: 30, marginBottom: 24 }}>
         Book Your Room
       </h2>
-      <form onSubmit={handleSubmit}>
+      <form>
         {/* Check In */}
         <div className='' style={{ marginBottom: 18, position:'relative',width: isIOS ?'98%':'90%',}}>
           <label style={{ color: 'gray', marginBottom: 6, display: 'block' }}>Check In:</label>
@@ -303,7 +296,7 @@ const BookingSection: React.FC = () => {
         </button>
 
         {/* Feedback */}
-        {error && <div style={{ color: '#e53e3e', marginTop: 16, textAlign: 'center' }}>{error}</div>}
+        {/* {error && <div style={{ color: '#e53e3e', marginTop: 16, textAlign: 'center' }}>{error}</div>} */}
        
       </form>
     </div>

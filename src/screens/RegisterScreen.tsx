@@ -27,6 +27,7 @@ const RegisterScreen: React.FC = () => {
       navigate('/verify-otp');
     } else {
       setError(data.message || 'Failed to send OTP');
+       setLoading(false)
     }
   };
   return (
@@ -75,61 +76,3 @@ const RegisterScreen: React.FC = () => {
 };
 
 export default RegisterScreen;
-
-// // Inside your <Routes>
-
-
-
-// import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// export default function Register() {
-//  const [name, setName] = useState('');
-//  const [mobile, setMobile] = useState('');
-//  const [email, setEmail] = useState('');
-//  const [error, setError] = useState('');
-//  const navigate = useNavigate();
-//  const handleSendOtp = async (e: React.FormEvent) => {
-//    e.preventDefault();
-//    const res = await fetch('https://anantainn.onrender.com/api/send-otp', {
-//      method: 'POST',
-//      headers: { 'Content-Type': 'application/json' },
-//      body: JSON.stringify({ name, email, mobile }),
-//    });
-//    const data = await res.json();
-//    if (res.ok) {
-//      localStorage.setItem('userInfo', JSON.stringify({ name, email, mobile }));
-//      navigate('/verify-otp');
-//    } else {
-//      setError(data.message || 'Failed to send OTP');
-//    }
-//  };
-//  return (
-// <form onSubmit={handleSendOtp} style={{ maxWidth: 400, margin: 'auto' }}>
-// <h2>Register to Book</h2>
-//  <input
-//             type="password"
-//             placeholder="Name"
-//             value={name}
-//             required
-//             onChange={e => setName(e.target.value)} 
-//             style={{ width: '90%', marginBottom: 16, padding: 12, borderRadius: 6, border: '1px solid #ddd' }}
-//           />
-// <input 
-// placeholder="Mobile" 
-// value={mobile} 
-// onChange={e => setMobile(e.target.value)} 
-// required
-// style={{ width: '90%', marginBottom: 16, padding: 12, borderRadius: 6, border: '1px solid #ddd' }}
-//  />
-// <input 
-// placeholder="Email" 
-// value={email} 
-// onChange={e => setEmail(e.target.value)} 
-// style={{ width: '90%', marginBottom: 16, padding: 12, borderRadius: 6, border: '1px solid #ddd' }}
-// required />
-
-// <button type="submit">Send OTP</button>
-//      {error && <p style={{ color: 'red' }}>{error}</p>}
-// </form>
-//  );
-// }
